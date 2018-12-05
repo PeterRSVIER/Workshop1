@@ -6,7 +6,7 @@ public class Menu {
 		// TODO Auto-generated method stub
 
 		Scanner input = new Scanner(System.in);
-		System.out.println("Welcome to our Cheesestore of Peter Werkomgeving");
+		System.out.println("Welcome to our Cheesestore of Peter2 Werkomgeving");
         Boolean isLoginCorrect = false;
 		String username, password;
         do {
