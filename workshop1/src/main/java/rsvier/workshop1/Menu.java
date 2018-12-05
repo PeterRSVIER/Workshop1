@@ -7,6 +7,7 @@ public class Menu {
 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to our Cheesestore of Peter2 Werkomgeving");
+		System.out.println("Welcome to our Cheesestore of Peter and Boudy Werkomgeving");
         Boolean isLoginCorrect = false;
 		String username, password;
         do {
