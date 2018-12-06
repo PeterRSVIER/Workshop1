@@ -20,7 +20,7 @@ public class Menu {
         }
 		while (!isLoginCorrect);
         
-        EmployeeMenu console = new EmployeeMenu();
+        EmployeeMenu employeeMenu = new EmployeeMenu();
         
 	}
 
