@@ -15,9 +15,10 @@ public class EmployeeMenu {
     
     int inputOption = input.nextInt();
 	switch (inputOption) {
-	case 1 : CustomerMenu customer = new CustomerMenu(); break;
-//	case 2 : OrderMenu order = new OrderMenu();
-	case 9 : EmployeeMenu employee = new EmployeeMenu(); break;
+	case 1 : new CustomerMenu(); break;
+//	case 2 : new OrderMenu();
+	case 3 : new ProductCatalog();
+	case 9 : new EmployeeMenu(); break;
 	default : System.out.println("Please choose 1,2,3 or 9"); break;
 	
 	}
