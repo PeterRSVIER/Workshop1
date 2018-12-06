@@ -1,16 +1,17 @@
 package rsvier.workshop1;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class CustomerMenu {
 
 	   public CustomerMenu() {
-			System.out.println("1 = View");
-			System.out.println("2 = Add");
-			System.out.println("3 = Modify");
-			System.out.println("4 = Delete");
-			System.out.println("9 = Back");
+		    System.out.println("Customer menu \n "
+		    		+ "1 = View \n"
+		    		+ "2 = Add \n "
+		    		+ "3 = Modify \n "
+		    		+ "4 = Delete \n"
+		    		+ "9 = Back");
 
-			Scanner input = new Scanner(System.in);
+//			Scanner input = new Scanner(System.in);
 	   }
 }
