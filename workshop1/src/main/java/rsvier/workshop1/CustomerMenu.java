@@ -22,5 +22,4 @@ public class CustomerMenu {
 	        }
             input.close();
 	}
-
 }
