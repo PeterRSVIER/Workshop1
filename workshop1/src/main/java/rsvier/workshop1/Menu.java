@@ -3,11 +3,9 @@ import java.util.*;
 public class Menu {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		Scanner input = new Scanner(System.in);
-		System.out.println("Welcome to our Cheesestore of Peter2 Werkomgeving");
-		System.out.println("Welcome to our Cheesestore of Peter and Boudy Werkomgeving");
+		System.out.println("Welcome to our Cheesestore of Peter and Boudy 2 Werkomgeving");
         Boolean isLoginCorrect = false;
 		String username, password;
         do {
