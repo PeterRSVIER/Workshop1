@@ -23,3 +23,4 @@ public class EmployeeMenu {
 	}
 	input.close();
    }
+}
