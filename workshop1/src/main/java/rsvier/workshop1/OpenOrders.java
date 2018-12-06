@@ -9,25 +9,29 @@ public class OpenOrders {
 								+ "1. <naam order 1> \n"
 								+ "2. <naam order 2> \n"
 								+ "3. <naam order 3> \n"
-								+ "4. <naam order 4> \n"
-								+ "5. <naam order 5> \n"
-								+ "6. <naam order 6> \n"
 								+ "9. Back ");
 			
 			Scanner input = new Scanner(System.in);
 		    
 		    int inputOpenOrders = input.nextInt();
 			switch (inputOpenOrders) {
-			case 1 :  	System.out.print("\n\n\n\n\n\n\n\n\n\n"
+			case 1 : 	System.out.print("\n\n\n\n\n\n\n\n\n\n"
 										+ "Deze order is geplaatst op: <datum> \n"
 										+ "en geplaast door: <naam> \n"
 										+ "en bestaat uit de volgende kazen \n\n"
 										+ "5x: Geitenkaas \n"
-										+ "10x: Oudekazen \n");
+										+ "10x: Oudekazen \n\n");
+						int inputOpenOrders2 = 0;
+										do {
+											System.out.println("Return to Open Orders? \n0 = No \n1= Yes");
+											inputOpenOrders2 = input.nextInt();
+										}
+										while ((int)inputOpenOrders2 != 1);
+										
+										new OpenOrders();
 										break;
-			
 			case 9 :  	System.out.print("\n\n\n\n\n\n\n\n\n\n");
-						OrderMenu orderMenu = new OrderMenu(); 
+						new OrderMenu(); 
 						break;
 						
 			default : 	System.out.println("Please choose 1 or 9"); 

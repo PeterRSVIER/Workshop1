@@ -14,14 +14,16 @@ public class OrderMenu {
 
 			Scanner input = new Scanner(System.in);
 		    
-		    int inputOption = input.nextInt();
-			switch (inputOption) {
+		    int inputOrderOption = input.nextInt();
+			switch (inputOrderOption) {
 			case 1 :  	System.out.print("\n\n\n\n\n\n\n\n\n\n");
 						OpenOrders openOrders = new OpenOrders();
+						break;
 						
 			case 2 : 	System.out.print("\n\n\n\n\n\n\n\n\n\n");
 						OrderArchive orderArchive = new OrderArchive();
-			
+						break;
+						
 			case 9 :  	System.out.print("\n\n\n\n\n\n\n\n\n\n");
 						EmployeeMenu employeeMenu = new EmployeeMenu(); 
 						break;
