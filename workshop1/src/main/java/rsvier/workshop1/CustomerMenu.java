@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 public class CustomerMenu {
 
-	   public CustomerMenu() {
+	
+
+	public CustomerMenu() {
 		    System.out.println("Customer menu \n "
 		    		+ "1 = View \n"
 		    		+ "2 = Add \n "
 		    		+ "9 = Back");
 
-			Scanner input = new Scanner(System.in);
+		    Scanner input = new Scanner(System.in);
 		    int inputCustomerMenu = input.nextInt();
 			switch (inputCustomerMenu) {
 			case 1 : new CustomerView(); break;
@@ -18,5 +20,7 @@ public class CustomerMenu {
 			case 9 : new EmployeeMenu(); break;//needs improvement
 			default : System.out.println("Please choose 1,2 or 9"); break;
 	        }
-       }
+            input.close();
+	}
+
 }
