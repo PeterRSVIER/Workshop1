@@ -9,7 +9,7 @@ package rsvier.workshop1;
 		private final String city;
 		private final String country;
 		
-//		Start of AddressGetters
+//		Start of Address-Getters
 		public int getAddressId() {return addressId;
 		}
 
@@ -36,8 +36,7 @@ package rsvier.workshop1;
 		public String getCountry() {
 			return country;
 		}
-//		End of AddressGetters
-
+//		End of Address-Getters
 //		Start of AddressBuilder
 		private Address(Builder builder) {
 		this.addressId = builder.addressId;
@@ -110,8 +109,6 @@ package rsvier.workshop1;
 		}
 		}
 // 		End of AddressBuilder
-		
-
 // 		Start of AddressBuilder Implementation
 		public static void main(String[] args) {
 		Address address = new Address.Builder()
