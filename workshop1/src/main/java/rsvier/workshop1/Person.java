@@ -12,12 +12,12 @@ class Person {
 	public Person() {
 	}
 
-	public Person(String firstname, String middlename, String surname, String phoneNumber, String email){
-	   this.firstname = firstname;
-	   this.middlename =   middlename;
-	   this.surname = surname;
-	   this.phoneNumber = phoneNumber;
-	   this.email = email;
+	private Person(Builder builder){
+	   this.firstname = builder.firstname;
+	   this.middlename =   builder.middlename;
+	   this.surname = builder.surname;
+	   this.phoneNumber = builder.phoneNumber;
+	   this.email = builder.email;
     }
 
 	public String getFirstname(){return firstname;}
@@ -35,6 +35,45 @@ class Person {
 @Override	
 	public String toString() {
 	  return firstname + " " + ((middlename != null)? middlename + " " : "") + surname + " " + phoneNumber + " " + email;
+    }
+
+//Inner builder class
+    public static class Builder{
+      private String firstname
+      ,              middlename
+      ,              surname
+      ,              phoneNumber
+      ,              email;
+
+      public Builder firstname(String firstname){
+    	  this.firstname = firstname;
+    	  return this;
+    	  }
+
+      public Builder middlename(String middlename){
+    	  this.middlename = middlename;
+    	  return this;
+    	  }
+
+      public Builder surname(String surname){
+    	  this.surname = surname;
+    	  return this;
+    	  }
+
+      public Builder phoneNumber(String phoneNumber){
+    	  this.phoneNumber = phoneNumber;
+    	  return this;
+    	  }
+
+      public Builder email(String email){
+    	  this.email = email;
+    	  return this;
+    	  }
+
+      public Person build() {
+    	  return new Person(this);
+      }
+
     }
 
 }

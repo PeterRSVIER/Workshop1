@@ -86,12 +86,12 @@ package rsvier.workshop1;
 		public static void main(String[] args) {
 		Address address = new Address.Builder()
 		.addressId(11111)
-		.street("streetInputHere")
-		.houseNumber(22222)
-		.houseExtension("houseExtensionInputHere")
-		.zipCode("zipCodeInputHere")
-		.city("cityInputHere")
-		.country("countryInputHere")
+		.street("Frans Halsstraat")
+		.houseNumber(77)
+		.houseExtension("A-2")
+		.zipCode("1072 BN")
+		.city("Amsterdam")
+		.country("NL")
 		.build();
 		System.out.println(address); 	
 		}

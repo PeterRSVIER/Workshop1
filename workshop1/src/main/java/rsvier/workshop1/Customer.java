@@ -1,48 +1,80 @@
 package rsvier.workshop1;
 
+import rsvier.workshop1.Person.Builder;
 import java.util.*;
 
 public class Customer extends Person {
 
-	private int customerId
-	,           residenceAddress
+	private final int customerId;
+	private int residenceAddress
 	,           billingAddress
 	,           deliveryAddress;
-	ArrayList<Order> orders = new ArrayList <Order>();
+	ArrayList<Order> orders = new ArrayList<Order>();
 
-
-	public Customer() {
+	private Customer() {
 		// TODO Auto-generated constructor stub
+		customerId = 1;
 	}
+	
+	private Customer(Builder builder){
+//		   super(firstname,middlename,surname,phoneNumber,email);
+		   this.customerId = builder.customerId;
+		   this.residenceAddress = builder.residenceAddress;
+		   this.billingAddress = builder.billingAddress;
+		   this.deliveryAddress = builder.deliveryAddress;
+	    }
 
-	public Customer(String firstname, String middlename, String surname, String phoneNumber, String email
-			       ,int customerId, int residenceAddress, int billingAddress, int deliveryAddress) {
-		super(firstname, middlename, surname, phoneNumber, email);
-		// TODO Auto-generated constructor stub
-		this.customerId = customerId;
-		this.residenceAddress = residenceAddress;
-		this.billingAddress = billingAddress;
-		this.deliveryAddress = deliveryAddress;
+
+//inner builder class
+	public static class Builder{
+		private int customerId;
+		private int residenceAddress
+		,           billingAddress
+		,           deliveryAddress;
+		private String firstname
+		,              middlename
+		,              surname
+		,              phoneNumber
+		,              email;
+
+        public Builder firstname(String firstname) {
+          this.firstname = firstname;
+          return this;
+        }
+
+        public Builder middlename(String middlename) {
+            this.middlename = middlename;
+            return this;
+          }
+
+        public Builder surname(String surname) {
+            this.surname = surname;
+            return this;
+          }
+
+        public Builder customerId(int customerId){
+	    	this.customerId = customerId;
+	    	return this;
+	    	}
+
+	    public Builder residenceAddress(int residenceAddress){
+	    	this.residenceAddress = residenceAddress;
+	    	return this;
+	    	}
+
+	    public Builder billingAddress(int billingAddress){
+	    	this.billingAddress = billingAddress;
+	    	return this;
+	    	}
+
+	    public Builder deliveryAddress(int deliveryAddress){
+	    	this.deliveryAddress = deliveryAddress;
+	    	return this;
+	    	}
+
+	    public Customer build() {
+	    	return new Customer(this);
+	    }
 	}
-
-	public int getCustomerId(){return customerId;}
-	public int getResidenceAddress() {return residenceAddress;}
-	public int getBillingAddress() {return billingAddress;}
-	public int getDeliveryAddress() {return deliveryAddress;}
-	public ArrayList<Order> getOrders(){return orders;}
-
-	public void setResidenceAdress(int residenceAddress) {this.residenceAddress = residenceAddress;}
-	public void setBillingAddress(int billingAddress) {this.billingAddress = billingAddress;}
-	public void setDeliveryAddress(int deliveryAddress) {this.deliveryAddress = deliveryAddress;}
-
-	public void addOrder(String order) {};
-	public void removeOrder(String order) {};
-	public void addOrder(Order order) {};
-	public void removeOrder(Order order) {};
-	public Customer searchCustomer(int customerId) {return this;}
-	public ArrayList<Customer> searchCustomer(String surname){ArrayList<Customer> customers = new ArrayList<Customer>(); return customers;} 
-
-@Override	
-	public String toString() {return super.toString() + ", Customer ID " + customerId;}
-
+	
 }
