@@ -1,13 +1,13 @@
 package rsvier.workshop1;
 
 	public class Address {
-		private final int addressId;
-		private final String street;
-		private final int houseNumber;
-		private final String houseExtension;
-		private final String zipCode;
-		private final String city;
-		private final String country;
+		private final int 		addressId,
+								houseNumber;
+		private final String 	street,
+								houseExtension,
+								zipCode,
+								city,
+								country;
 		
 //		Start of Address-Getters
 		public int getAddressId() {return addressId;
@@ -61,13 +61,13 @@ package rsvier.workshop1;
 		}
 		
 		public static class Builder {
-		private int addressId;
-		private String street;
-		private int houseNumber;
-		private String houseExtension;
-		private String zipCode;
-		private String city;
-		private String country;
+		private int 	addressId,
+						houseNumber;
+		private String 	street,
+						houseExtension,
+						zipCode,
+						city,
+						country;
 		
 		public Builder addressId(int addressId) {
 		this.addressId = addressId;
