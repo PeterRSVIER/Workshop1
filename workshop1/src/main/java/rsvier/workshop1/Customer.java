@@ -8,8 +8,7 @@ public class Customer extends Person {
 	,           residenceAddress
 	,           billingAddress
 	,           deliveryAddress;
-	ArrayList<String> orders = new ArrayList <String>();
-//	ArrayList<Order> orders = new ArrayList <Order>();
+	ArrayList<Order> orders = new ArrayList <Order>();
 
 
 	public Customer() {
@@ -30,8 +29,7 @@ public class Customer extends Person {
 	public int getResidenceAddress() {return residenceAddress;}
 	public int getBillingAddress() {return billingAddress;}
 	public int getDeliveryAddress() {return deliveryAddress;}
-	public ArrayList<String> getOrders(){return orders;}
-//	public ArrayList<Order> getOrders(){return orders;}
+	public ArrayList<Order> getOrders(){return orders;}
 
 	public void setResidenceAdress(int residenceAddress) {this.residenceAddress = residenceAddress;}
 	public void setBillingAddress(int billingAddress) {this.billingAddress = billingAddress;}
@@ -39,8 +37,8 @@ public class Customer extends Person {
 
 	public void addOrder(String order) {};
 	public void removeOrder(String order) {};
-//	public void addOrder(Order order) {};
-//	public void removeOrder(Order order) {};
+	public void addOrder(Order order) {};
+	public void removeOrder(Order order) {};
 	public Customer searchCustomer(int customerId) {return this;}
 	public ArrayList<Customer> searchCustomer(String surname){ArrayList<Customer> customers = new ArrayList<Customer>(); return customers;} 
 
