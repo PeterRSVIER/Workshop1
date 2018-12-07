@@ -52,6 +52,16 @@ public class Customer extends Person {
             return this;
           }
 
+        public Builder phoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+          }
+
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+          }
+
         public Builder customerId(int customerId){
 	    	this.customerId = customerId;
 	    	return this;
