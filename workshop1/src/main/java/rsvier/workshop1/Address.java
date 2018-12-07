@@ -9,6 +9,35 @@ package rsvier.workshop1;
 		private final String city;
 		private final String country;
 		
+//		Start of Address-Getters
+		public int getAddressId() {return addressId;
+		}
+
+		public String getStreet() {
+			return street;
+		}
+
+		public int getHouseNumber() {
+			return houseNumber;
+		}
+
+		public String getHouseExtension() {
+			return houseExtension;
+		}
+		
+		public String getZipCode() {
+			return zipCode;
+		}
+		
+		public String getcity() {
+			return city;
+		}
+		
+		public String getCountry() {
+			return country;
+		}
+//		End of Address-Getters
+//		Start of AddressBuilder
 		private Address(Builder builder) {
 		this.addressId = builder.addressId;
 		this.street = builder.street;
@@ -79,21 +108,19 @@ package rsvier.workshop1;
 		return new Address(this);
 		}
 		}
-
-		
-
-// 		Start of Implementation
+// 		End of AddressBuilder
+// 		Start of AddressBuilder Implementation
 		public static void main(String[] args) {
 		Address address = new Address.Builder()
 		.addressId(11111)
-		.street("Frans Halsstraat")
-		.houseNumber(77)
-		.houseExtension("A-2")
-		.zipCode("1072 BN")
-		.city("Amsterdam")
-		.country("NL")
+		.street("Dokter van Stratenweg")
+		.houseNumber(327)
+		.houseExtension("")
+		.zipCode("4205LE")
+		.city("Gorinchem")
+		.country("Nederland")
 		.build();
 		System.out.println(address); 	
 		}
 	}
-//		End of implementation
+//		End of AddressBuilder implementation
