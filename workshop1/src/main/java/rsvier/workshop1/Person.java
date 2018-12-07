@@ -3,7 +3,7 @@ package rsvier.workshop1;
 public //abstract 
 class Person {
 
-	private String firstname
+	protected String firstname
 	,              middlename
 	,              surname
 	,              phoneNumber
@@ -39,7 +39,7 @@ class Person {
 
 //Inner builder class
     public static class Builder{
-      private String firstname
+      protected String firstname
       ,              middlename
       ,              surname
       ,              phoneNumber

@@ -17,7 +17,7 @@ public class CustomerTest {
     		  .billingAddress(0)
     		  .deliveryAddress(0)
     		  .build()
-      ,	       pegr = new Customer.Builder()
+      ,        pegr = new Customer.Builder()
 	           .firstname("Peter")
 	           .middlename("de")
 	           .surname("Graaf")

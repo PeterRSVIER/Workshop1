@@ -17,7 +17,11 @@ public class Customer extends Person {
 	}
 	
 	private Customer(Builder builder){
-//		   super(firstname,middlename,surname,phoneNumber,email);
+		   this.firstname = builder.firstname;  
+		   this.middlename = builder.middlename;
+		   this.surname = builder.surname;
+		   this.phoneNumber = builder.phoneNumber;
+		   this.email = builder.email;
 		   this.customerId = builder.customerId;
 		   this.residenceAddress = builder.residenceAddress;
 		   this.billingAddress = builder.billingAddress;
