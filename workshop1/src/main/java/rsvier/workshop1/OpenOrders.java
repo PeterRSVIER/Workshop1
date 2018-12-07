@@ -23,7 +23,10 @@ public class OpenOrders {
 										+ "10x: Oudekazen \n\n");
 						int inputOpenOrders2 = 0;
 										do {
-											System.out.println("Return to Open Orders? \n0 = No \n1= Yes");
+											System.out.println(
+													"Return to Open Orders? \n"
+													+ "0 = No \n"
+													+ "1= Yes");
 											inputOpenOrders2 = input.nextInt();
 										}
 										while ((int)inputOpenOrders2 != 1);
