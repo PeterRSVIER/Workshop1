@@ -2,17 +2,29 @@ package rsvier.workshop1;
 
 	public class Address {
 		private final int 		addressId,
+								customerId,
 								houseNumber;
-		private final String 	street,
+
+		private final String 	addressType,
+								street,
 								houseExtension,
 								zipCode,
 								city,
 								country;
 		
 //		Start of Address-Getters
-		public int getAddressId() {return addressId;
+		public int getAddressId() {
+			return addressId;
+		}
+		
+		public int getCustomerId() {
+			return customerId;
 		}
 
+		public String getAddressType() {
+			return addressType;
+		}
+		
 		public String getStreet() {
 			return street;
 		}
@@ -29,7 +41,7 @@ package rsvier.workshop1;
 			return zipCode;
 		}
 		
-		public String getcity() {
+		public String getCity() {
 			return city;
 		}
 		
@@ -39,6 +51,8 @@ package rsvier.workshop1;
 //		End of Address-Getters
 //		Start of AddressBuilder
 		private Address(Builder builder) {
+		this.customerId = builder.customerId;
+		this.addressType = builder.addressType;
 		this.addressId = builder.addressId;
 		this.street = builder.street;
 		this.houseNumber = builder.houseNumber;
@@ -52,22 +66,37 @@ package rsvier.workshop1;
 		public String toString() {
 		return 
 		addressId + " "
+		+ customerId + " "
+		+ addressType + " "
 		+ ((street != null) ? street + " ": "")
 		+ (Integer.toString(houseNumber) !="0" ? Integer.toString(houseNumber) + " ": "")
 		+ ((houseExtension != null) ? houseExtension + " ": "")
 		+ ((zipCode != null) ? zipCode + " ": "")
 		+ ((city != null) ? city + " ": "")
 		+ ((country != null) ? country + " ": "");
+		
 		}
 		
 		public static class Builder {
 		private int 	addressId,
-						houseNumber;
-		private String 	street,
+						houseNumber,
+						customerId;
+		private String 	addressType,
+						street,
 						houseExtension,
 						zipCode,
 						city,
 						country;
+		
+		public Builder customerId(int customerId) {
+		this.customerId = customerId;
+		return this;
+		}
+		
+		public Builder addressType(String addressType) {
+		this.addressType = addressType;
+		return this;
+		}
 		
 		public Builder addressId(int addressId) {
 		this.addressId = addressId;
@@ -113,6 +142,8 @@ package rsvier.workshop1;
 		public static void main(String[] args) {
 		Address address = new Address.Builder()
 		.addressId(11111)
+		.addressType("AddressTypeInput")
+		.customerId(333333)
 		.street("Dokter van Stratenweg")
 		.houseNumber(327)
 		.houseExtension("")
