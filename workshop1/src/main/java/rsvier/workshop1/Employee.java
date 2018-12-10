@@ -2,9 +2,9 @@ package rsvier.workshop1;
 
 public class Employee extends Person{
 
-	private int idNumber;
-	private String username;
-	private String password;
+	private int 	idNumber;
+	private String 	username,
+					password;
 	private boolean isAdmin;
 
 	protected Employee(int idNumber, String username, String password, boolean isAdmin) {
