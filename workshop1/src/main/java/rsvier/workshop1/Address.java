@@ -1,4 +1,5 @@
 package rsvier.workshop1;
+import java.sql.*;
 
 	public class Address {
 		private final int 		addressId,
@@ -140,6 +141,8 @@ package rsvier.workshop1;
 // 		End of AddressBuilder
 // 		Start of AddressBuilder Implementation
 		public static void main(String[] args) {
+			
+		Connection connection = new DriverManager.getConnection	("jbdc:mysql://localhost/pb_workshop1", "root", "rsvier");
 		Address address = new Address.Builder()
 		.addressId(11111)
 		.addressType("AddressTypeInput")
@@ -151,7 +154,9 @@ package rsvier.workshop1;
 		.city("Gorinchem")
 		.country("Nederland")
 		.build();
-		System.out.println(address); 	
+		System.out.println(address); 
+		
+		
 		}
 	}
 //		End of AddressBuilder implementation
