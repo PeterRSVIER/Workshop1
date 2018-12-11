@@ -1,6 +1,5 @@
 package rsvier.workshop1;
 import java.sql.*;
-import java.sql.Connection;
 
 	public class Address {
 		private final int 		addressId,
@@ -139,36 +138,23 @@ import java.sql.Connection;
 		return new Address(this);
 		}
 		}
-// 		End of AddressBuilder
-// 		Start of AddressBuilder Implementation
-		public static void main(String[] args) {
-		try {	
-		Connection connection = DriverManager.getConnection("jbdc:mysql://localhost/pb_workshop1", "root", "rsvier");
-		Statement statement = connection.createStatement();
-		
-		}
-		
-		catch (SQLException ex) {
-		}
-
-
-		
-		
-		
-		Address address = new Address.Builder()
-		.addressId(11111)
-		.addressType("AddressTypeInput")
-		.customerId(333333)
-		.street("Dokter van Stratenweg")
-		.houseNumber(327)
-		.houseExtension("")
-		.zipCode("4205LE")
-		.city("Gorinchem")
-		.country("Nederland")
-		.build();
-		System.out.println(address); 
-		
-		
-		}
 	}
+// 		End of AddressBuilder
+// 		Start of AddressBuilder Implementation	
+//		Address address = new Address.Builder()
+//		.addressId(11111)
+//		.addressType("AddressTypeInput")
+//		.customerId(333333)
+//		.street("Dokter van Stratenweg")
+//		.houseNumber(327)
+//		.houseExtension("")
+//		.zipCode("4205LE")
+//		.city("Gorinchem")
+//		.country("Nederland")
+//		.build();
+//		System.out.println(address); 
+//		
+//		
+//		}
+//	}
 //		End of AddressBuilder implementation
