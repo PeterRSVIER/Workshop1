@@ -141,8 +141,16 @@ import java.sql.*;
 // 		End of AddressBuilder
 // 		Start of AddressBuilder Implementation
 		public static void main(String[] args) {
-			
-		Connection connection = new DriverManager.getConnection	("jbdc:mysql://localhost/pb_workshop1", "root", "rsvier");
+		try {	
+		Connection connection = DriverManager.getConnection("jbdc:mysql://localhost/pb_workshop1", "root", "rsvier");
+		}
+		
+		catch (SQLException ex) {
+		}
+		
+		
+		
+		
 		Address address = new Address.Builder()
 		.addressId(11111)
 		.addressType("AddressTypeInput")
