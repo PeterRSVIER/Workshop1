@@ -1,5 +1,6 @@
 package rsvier.workshop1;
 import java.sql.*;
+import java.sql.Connection;
 
 	public class Address {
 		private final int 		addressId,
@@ -143,11 +144,14 @@ import java.sql.*;
 		public static void main(String[] args) {
 		try {	
 		Connection connection = DriverManager.getConnection("jbdc:mysql://localhost/pb_workshop1", "root", "rsvier");
+		Statement statement = connection.createStatement();
+		
 		}
 		
 		catch (SQLException ex) {
 		}
-		
+
+
 		
 		
 		
