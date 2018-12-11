@@ -1,43 +1,50 @@
 package rsvier.workshop1;
 
-public class Employee extends Person{
+public class Employee{
 
-	private int 	idNumber;
-	private String 	username,
-					password;
-	private boolean isAdmin;
+	private final int 	idNumber;
+	private String 	firstname
+	,				middlename
+	,               surname;
 
-	protected Employee(int idNumber, String username, String password, boolean isAdmin) {
-	this.idNumber = idNumber;
-	this.username = username;
-	this.password = password;
-	this.isAdmin = isAdmin;
+	public Employee(int idNumber, String firstname, String middlename, String surname) {
+      this.idNumber = idNumber;
+	  this.firstname = firstname;
+	  this.middlename = middlename;
+	  this.surname = surname;
 	}
 	
 // Begin of Employee-Getters 
-protected int getIdNumber() {
+public int getIdNumber() {
 	return idNumber;
 }
 
-protected String getUsername() {
-	return username;
+public String getFirstname() {
+	return firstname;
 }
 	
-protected boolean getIsAdmin() {
-	return isAdmin;
+public String getMiddlename() {
+	return middlename;
 }
+
+public String getSurname() {
+	return surname;
+}
+
 // End of Employee-Getters
 // Begin of Employee-Setters
-protected void setIdNumber(int idNumber) {
-	this.idNumber = idNumber;
-	}
 
-protected void setUsername(String username) {
-	this.username = username;
+public void setFirstname(String firstname) {
+	this.firstname = firstname;
 }
 
-protected void setIsAdmin(boolean isAdmin) {
-	this.isAdmin = isAdmin;
+public void setMiddlename(String middlename) {
+	this.middlename = middlename;
 }
+
+public void setSurname(String surname) {
+	this.surname = surname;
+}
+
 // End of Employee-Setters
 }
