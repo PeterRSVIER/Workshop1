@@ -1,4 +1,4 @@
-package rsvier.workshop1;
+package user;
 
 public class Employee{
 

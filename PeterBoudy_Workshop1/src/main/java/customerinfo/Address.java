@@ -1,4 +1,4 @@
-package rsvier.workshop1;
+package customerinfo;
 import java.sql.*;
 
 	public class Address {

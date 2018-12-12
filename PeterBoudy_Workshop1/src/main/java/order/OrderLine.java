@@ -1,4 +1,4 @@
-package rsvier.workshop1;
+package order;
 
 public class OrderLine {
 

@@ -1,4 +1,4 @@
-package rsvier.workshop1;
+package store;
 
 import java.math.BigDecimal;
 
