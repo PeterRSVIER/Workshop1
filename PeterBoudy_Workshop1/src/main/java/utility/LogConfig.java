@@ -11,12 +11,11 @@ public class LogConfig {
 			return logger;
 		}
 		
-		public static void LoggerStart() {
-			
-			logger.setLevel(Level.ALL);
+		private static void LoggerStart() {
+
 			LogManager.getLogManager().reset();
-			
 			logger.addHandler(consoleHandler);
+			logger.setLevel(Level.ALL);
 			consoleHandler.setLevel(Level.ALL);
 		}
 		
