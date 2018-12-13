@@ -1,0 +1,6 @@
+Dec 13, 2018 10:58:53 AM Trying to login to database {} with username {} ... jdbc:mysql://localhost/pb_workshop1
+FINER: ENTRY root
+Dec 13, 2018 10:58:53 AM ... and password {} rsvier
+FINER: ENTRY
+Dec 13, 2018 10:58:53 AM connectdatabase.ConnectDatabase main
+INFO: Connected to Database
