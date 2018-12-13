@@ -1,7 +1,5 @@
-package connectdatabase;
+package utility;
 import java.util.logging.*;
-import java.io.*;
-
 
 public class LogConfig {
 
@@ -14,10 +12,11 @@ public class LogConfig {
 		}
 		
 		public static void LoggerStart() {
-
-			LogManager.getLogManager().reset();
-			logger.addHandler(consoleHandler);
+			
 			logger.setLevel(Level.ALL);
+			LogManager.getLogManager().reset();
+			
+			logger.addHandler(consoleHandler);
 			consoleHandler.setLevel(Level.ALL);
 		}
 		

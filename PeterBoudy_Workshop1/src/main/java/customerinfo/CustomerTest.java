@@ -1,14 +1,16 @@
 package customerinfo;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
+import utility.LogConfig;
+
+
 public class CustomerTest {
 
 	public static void main(String[] args) {
-		final Logger logger = connectdatabase.LogConfig.getLogger();
+		final Logger logger = LogConfig.getLogger();
 		
 //		Specify LogLevel for Class here, default = ALL
-		connectdatabase.LogConfig.setHandlerLevel(Level.FINE);
+		utility.LogConfig.setHandlerLevel(Level.FINE);
 //
 
 		String 	firstname = "Boudewijn", 
