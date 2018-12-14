@@ -3,9 +3,9 @@ package user;
 public class Account {
 
 	private final int accountId;
-	private String email
-	,       password
-	,       accountType;
+	private String email;
+	private String password;
+	private String accountType;
 
 	public Account(int accountId, String email, String password, String accountType){
 	   this.accountId = accountId;

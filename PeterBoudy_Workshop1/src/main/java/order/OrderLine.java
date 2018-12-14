@@ -2,8 +2,8 @@ package order;
 
 public class OrderLine {
 
-	private final int orderId
-	,       productId;
+	private final int orderId;
+	private final int productId;
 	private int amount;
 
 	public OrderLine(int orderId, int productId, int amount) {

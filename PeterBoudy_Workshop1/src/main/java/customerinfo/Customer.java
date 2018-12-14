@@ -2,11 +2,11 @@ package customerinfo;
 
 public class Customer {
 
-	private final int 	customerId,
-						accountId;
-	private String 		firstname, 
-						middlename, 
-						surname;
+	private final int 	customerId;
+	private final int 	accountId;
+	private String	firstname; 
+	private String	middlename; 
+    private String surname;
 	
 	private Customer(Builder builder){
 		   this.firstname = builder.firstname;  

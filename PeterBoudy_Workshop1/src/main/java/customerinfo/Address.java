@@ -2,16 +2,16 @@ package customerinfo;
 import java.sql.*;
 
 	public class Address {
-		private final int 		addressId,
-								customerId,
-								houseNumber;
+		private final int 		addressId;
+		private final int 		customerId;
+		private int 			houseNumber;
 
-		private final String 	addressType,
-								street,
-								houseExtension,
-								zipCode,
-								city,
-								country;
+		private final String 	addressType;
+		private final String 	street;
+		private final String 	houseExtension;
+		private final String	zipCode;
+		private final String	city;
+		private final String	country;
 		
 //		Start of Address-Getters
 		public int getAddressId() {
@@ -79,15 +79,15 @@ import java.sql.*;
 		}
 		
 		public static class Builder {
-		private int 	addressId,
-						houseNumber,
-						customerId;
-		private String 	addressType,
-						street,
-						houseExtension,
-						zipCode,
-						city,
-						country;
+		private int 	addressId;
+		private int 	houseNumber;
+		private int		customerId;
+		private String 	addressType;
+		private String	street;
+		private String	houseExtension;
+		private String	zipCode;
+		private String	city;
+		private String	country;
 		
 		public Builder customerId(int customerId) {
 		this.customerId = customerId;

@@ -2,10 +2,10 @@ package user;
 
 public class Employee{
 
-	private final int 	idNumber;
-	private String 	firstname
-	,				middlename
-	,               surname;
+	private final int idNumber;
+	private String 	firstname;
+	private String middlename;
+	private String surname;
 
 	public Employee(int idNumber, String firstname, String middlename, String surname) {
       this.idNumber = idNumber;
