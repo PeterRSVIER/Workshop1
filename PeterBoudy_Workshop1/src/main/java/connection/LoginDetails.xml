@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sql>
+	<url>jdbc:mysql://localhost/pb_workshop1</url>
+	<username>root</username>
+	<password>rsvier </password>
+</Sql>
