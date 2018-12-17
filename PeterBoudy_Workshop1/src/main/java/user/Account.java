@@ -2,20 +2,20 @@ package user;
 
 public class Account {
 
-	private final int accountId;
+	private final int id;
 	private String email;
 	private String password;
 	private String accountType;
 
-	public Account(int accountId, String email, String password, String accountType){
-	   this.accountId = accountId;
+	public Account(int id, String email, String password, String accountType){
+	   this.id = id;
 	   this.email = email;
 	   this.password = password;
 	   this.accountType = accountType;
     }
 
-	public int getAccountId(){
-		return accountId;
+	public int getId(){
+		return id;
 		}
 
 	public String getEmail(){
@@ -45,7 +45,7 @@ public class Account {
 
 	@Override	
 	public String toString() {
-	  return accountId + " " + email + " " + accountType;
+	  return id + " " + email + " " + accountType;
     }
 
 

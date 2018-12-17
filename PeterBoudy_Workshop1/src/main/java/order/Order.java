@@ -2,26 +2,27 @@ package order;
 
 import java.util.*;
 import java.math.*;
-import java.time.LocalDateTime;
+import java.time.*;
+
 
 public class Order {
 
-  private final int orderId;
+  private final int id;
   private BigDecimal totalCost;
   private LocalDateTime date;
   private final int customerId;
   private String status;
   
-  public Order(int orderId, BigDecimal totalCost, LocalDateTime date, int customerId, String status) {
-	  this.orderId = orderId;
+  public Order(int id, BigDecimal totalCost, LocalDateTime date, int customerId, String status) {
+	  this.id = id;
 	  this.totalCost = totalCost;
 	  this.date = date;
 	  this.customerId = customerId;
 	  this.status = status;
   }
 
-  public int getOrderId() {
-	  return orderId;
+  public int getId() {
+	  return id;
 	  }
 
   public BigDecimal	getTotalCost() {

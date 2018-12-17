@@ -2,7 +2,7 @@ package customerinfo;
 import java.sql.*;
 
 	public class Address {
-		private final int 		addressId;
+		private final int 		id;
 		private final int 		customerId;
 		private int 			houseNumber;
 
@@ -14,8 +14,8 @@ import java.sql.*;
 		private final String	country;
 		
 //		Start of Address-Getters
-		public int getAddressId() {
-			return addressId;
+		public int getId() {
+			return id;
 		}
 		
 		public int getCustomerId() {
@@ -54,7 +54,7 @@ import java.sql.*;
 		private Address(Builder builder) {
 		this.customerId = builder.customerId;
 		this.addressType = builder.addressType;
-		this.addressId = builder.addressId;
+		this.id = builder.id;
 		this.street = builder.street;
 		this.houseNumber = builder.houseNumber;
 		this.houseExtension = builder.houseExtension;
@@ -66,7 +66,7 @@ import java.sql.*;
 		@Override
 		public String toString() {
 		return 
-		addressId + " "
+		id + " "
 		+ customerId + " "
 		+ addressType + " "
 		+ ((street != null) ? street + " ": "")
@@ -79,7 +79,7 @@ import java.sql.*;
 		}
 		
 		public static class Builder {
-		private int 	addressId;
+		private int 	id;
 		private int 	houseNumber;
 		private int		customerId;
 		private String 	addressType;
@@ -99,8 +99,8 @@ import java.sql.*;
 		return this;
 		}
 		
-		public Builder addressId(int addressId) {
-		this.addressId = addressId;
+		public Builder id(int id) {
+		this.id = id;
 		return this;
 		}
 		
