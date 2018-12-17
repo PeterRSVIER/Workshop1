@@ -2,5 +2,5 @@
 <Sql>
 	<url>jdbc:mysql://localhost/pb_workshop1</url>
 	<username>root</username>
-	<password>rsvier </password>
+	<password>rsvier</password>
 </Sql>
