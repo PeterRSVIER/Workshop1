@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 public class Product {
 
 	private String productName;
-	private int productId;
+	private int id;
 	private int stock;//#of this product in stock
 	private BigDecimal price;  //instead of BigNumber
 
-    private Product(String productName, int productId, BigDecimal price, int stock) {
+    private Product(String productName, int id, BigDecimal price, int stock) {
       this.productName = productName;
-      this.productId = productId;
+      this.id = id;
       this.price = price;
       this.stock = stock;
     }
@@ -20,8 +20,8 @@ public class Product {
 		return productName;
 		}
 
-	public int getProductId() {
-		return productId;
+	public int getId() {
+		return id;
 		}
 
 	public BigDecimal getPrice() {

@@ -2,7 +2,7 @@ package customerinfo;
 
 public class Customer {
 
-	private final int 	customerId;
+	private final int 	id;
 	private final int 	accountId;
 	private String	firstname; 
 	private String	middlename; 
@@ -13,16 +13,16 @@ public class Customer {
 		   this.middlename = builder.middlename;
 		   this.surname = builder.surname;
 		   this.accountId = builder.accountId;
-		   this.customerId = builder.customerId;
+		   this.id = builder.id;
 	    }
 
 	//inner builder class
 	public static class Builder{
-		private String	firstname
-		,              	middlename
-		,              	surname;
-		private int		accountId
-		,				customerId;
+		private String	firstname;
+		private String 	middlename;
+		private String 	surname;
+		private int		accountId;
+		private int		id;
 
         public Builder firstname(String firstname) {
           this.firstname = firstname;
@@ -44,8 +44,8 @@ public class Customer {
             return this;
           }
 
-        public Builder customerId(int customerId){
-	    	this.customerId = customerId;
+        public Builder id(int id){
+	    	this.id = id;
 	    	return this;
 	    	}
 
@@ -78,8 +78,8 @@ public class Customer {
 		this.surname = surname;
 	}
 
-	public int getCustomerId() {
-		return customerId;
+	public int getId() {
+		return id;
 	}
 
 	public int getAccountId() {

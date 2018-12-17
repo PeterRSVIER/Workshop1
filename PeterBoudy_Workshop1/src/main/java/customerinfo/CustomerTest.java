@@ -21,7 +21,7 @@ public class CustomerTest {
     		  .firstname(firstname)
     		  .middlename(middlename)
     		  .surname(lastname)
-    		  .customerId(1)
+    		  .id(1)
     		  .build();
         
 
@@ -33,7 +33,7 @@ public class CustomerTest {
 	           .firstname(firstname)
 	           .middlename(middlename)
 	           .surname(lastname)
-	           .customerId(2)
+	           .id(2)
 	           .build();
         logger.log(Level.INFO, "Customers successfully created: {0}", firstname + " " + middlename + " " + lastname);//
 	}
