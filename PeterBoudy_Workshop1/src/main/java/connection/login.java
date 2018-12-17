@@ -35,7 +35,7 @@ final Logger LOG = LoggerFactory.getLogger(login.class);
 				url = document.getElementsByTagName("url").item(0).getTextContent();
 			    } 
 				else {
-				LOG.info("xmlFile not found");
+				LOG.info("xmlFile containing credentials not found");
 				}
 				}
 			    //Which Exceptions do we need to catch? (by Peter) bijv. bestand bestaat niet.
@@ -43,10 +43,10 @@ final Logger LOG = LoggerFactory.getLogger(login.class);
 				ex.printStackTrace();
 			    }
 
-	LOG.info("Trying to login to database with: \n"
-			+ "Username: "+ username + "\n"
-			+ "Password " + password + "\n"
-			+ "URL: " + url + "\n");
+	//LOG.info("Trying to login to database with: \n"
+	//		+ "Username: "+ username + "\n"
+	//		+ "Password " + password + "\n"
+	//		+ "URL: " + url + "\n");
 
     try {
 	Connection connection = DriverManager.getConnection(url,username,password);
