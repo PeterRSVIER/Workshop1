@@ -9,7 +9,7 @@ public class Product {
 	private int stock;//#of this product in stock
 	private BigDecimal price;  //instead of BigNumber
 
-    private Product(String productName, int id, BigDecimal price, int stock) {
+    public Product(String productName, int id, BigDecimal price, int stock) {
       this.productName = productName;
       this.id = id;
       this.price = price;

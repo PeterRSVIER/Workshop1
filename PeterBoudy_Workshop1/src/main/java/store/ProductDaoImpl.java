@@ -1,34 +1,36 @@
 package store;
 
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+
 import connection.login;
 
 public class ProductDaoImpl implements ProductDao {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
+private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
 	
-	public void createProduct(List<Product> productList) {
+	public void createProduct(Product product) {
 		// TODO Auto-generated method stub
-		String query = "INSERT INTO product (id, productname, price, stock) VALUES( ?, ?, ?, ?)"; 
+		String query = "INSERT INTO product (name, id, price, stock) VALUES( ?, ?, ?, ?)"; 
 	    try {
-		  login.createconnection();
-		  Statement statement = login.connection.createStatement();
-		  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
-	  	  for (Product product : productList) { 
-		         preparedStatement.setInt(1, product.getId());
-		         preparedStatement.setString(2, product.getProductName()); 
+		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1","root","rsvier");
+		  PreparedStatement preparedStatement = connection.prepareStatement(query);
+		         preparedStatement.setString(1, product.getProductName()); 
+		         preparedStatement.setInt(2, product.getId());
 		         preparedStatement.setBigDecimal(3, product.getPrice()); 
 		         preparedStatement.setInt(4, product.getStock()); 
 		         preparedStatement.executeUpdate(); 
-		  } 
-	    LOG.info("Product successfully created"); 
+		         LOG.info("Product successfully created"); 
 	    } 
 	    catch (SQLException e) { 
 	    	e.printStackTrace(); 
