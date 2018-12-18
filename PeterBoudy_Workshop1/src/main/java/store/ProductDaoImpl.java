@@ -1,34 +1,46 @@
 package store;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import connection.login;
 
-public class ProductDaoFactory implements ProductDao {
+public class ProductDaoImpl implements ProductDao {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
+	
 	public void createProduct(List<Product> productList) {
 		// TODO Auto-generated method stub
 		String query = "INSERT INTO product (id, productname, price, stock) VALUES( ?, ?, ?, ?)"; 
 	    try {
-		  ConnectDatabase conn = new ConnectDatabase(); 
-	  	  PreparedStatement preparedStatement = conn.prepareStatement(query);
-	      for (Product product : productList) { 
+		  login.createconnection();
+		  Statement statement = login.connection.createStatement();
+		  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+	  	  for (Product product : productList) { 
 		         preparedStatement.setInt(1, product.getId());
 		         preparedStatement.setString(2, product.getProductName()); 
 		         preparedStatement.setBigDecimal(3, product.getPrice()); 
 		         preparedStatement.setInt(4, product.getStock()); 
 		         preparedStatement.executeUpdate(); 
 		  } 
-	    logger.log(Level.INFO, "Product successfully created"); 
+	    LOG.info("Product successfully created"); 
 	    } 
 	    catch (SQLException e) { 
-		  logger.log(Level.WARNING, "SQL exception ocurred.", e); 
+	    	e.printStackTrace(); 
 		} 
 	}
 
 	public void updateProduct(List<Product> productList) {
 		String query = "UPDATE product SET productname = ?, price = ? , stock = ? WHERE id = ?"; 
 		try {
-		  ConnectDatabase conn = new ConnectDatabase(); 
-		  PreparedStatement preparedStatement = conn.prepareStatement(query);
+		  login.createconnection();
+		  Statement statement = login.connection.createStatement();
+		  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
 		  for (Product product : productList) { 
 			  preparedStatement.setString(1, product.getProductName()); 
 			  preparedStatement.setBigDecimal(2, product.getPrice()); 
@@ -36,40 +48,42 @@ public class ProductDaoFactory implements ProductDao {
 			  preparedStatement.setInt(4, product.getId()); 
 			  preparedStatement.executeUpdate(); 
 			  } 
-		  logger.log(Level.INFO, "Product successfully updated"); 
+		  LOG.info("Product successfully updated"); 
 		} 
 		catch (SQLException e) { 
-		  logger.log(Level.WARNING, "SQL exception ocurred.", e); 
+			e.printStackTrace(); 
 		} 
 	}
 
 	public void deleteProduct(List<Product> productList) {
 		String query = "DELETE product WHERE id = ?"; 
 		try {
-		  ConnectDatabase conn = new ConnectDatabase(); 
-		  PreparedStatement preparedStatement = conn.prepareStatement(query);
+		  login.createconnection();
+		  Statement statement = login.connection.createStatement();
+		  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
 		  for (Product product : productList) { 
 			  preparedStatement.setInt(1, product.getId()); 
 			  preparedStatement.executeUpdate(); 
 			  } 
-		  logger.log(Level.INFO, "Product successfully removed"); 
+		  LOG.info("Product successfully removed"); 
 		} 
 		catch (SQLException e) { 
-		  logger.log(Level.WARNING, "SQL exception ocurred.", e); 
+			e.printStackTrace(); 
 		} 
 	}
 
 	public void getProductByProductName(String productName) {
 	  String query = "SELECT id, productname, date, stock from product WHERE productname = ?"; 
 	  try {
-	    ConnectDatabase conn = new ConnectDatabase(); 
-	    PreparedStatement preparedStatement = conn.prepareStatement(query);
+		login.createconnection();
+		Statement statement = login.connection.createStatement();
+		PreparedStatement preparedStatement = login.connection.prepareStatement(query);
 	    preparedStatement.setString(1, productName); 
 	    preparedStatement.executeUpdate(); 
-	    logger.log(Level.INFO, "Products successfully retrieved"); 
+	    LOG.info("Products successfully retrieved"); 
 	  } 
 	  catch (SQLException e) { 
-	    logger.log(Level.WARNING, "SQL exception ocurred.", e); 
+		  e.printStackTrace(); 
 	  } 
 	}
 
@@ -77,14 +91,15 @@ public class ProductDaoFactory implements ProductDao {
 		// TODO Auto-generated method stub
 		String query = "SELECT id, productname, date, stock from product WHERE id = ?"; 
 		try {
-		  ConnectDatabase conn = new ConnectDatabase(); 
-		  PreparedStatement preparedStatement = conn.prepareStatement(query);
+		  login.createconnection();
+		  Statement statement = login.connection.createStatement();
+		  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
 		  preparedStatement.setInt(1, id); 
 		  preparedStatement.executeUpdate(); 
-		  logger.log(Level.INFO, "Product successfully retrieved"); 
+		  LOG.info("Product successfully retrieved"); 
 		} 
 		catch (SQLException e) { 
-		  logger.log(Level.WARNING, "SQL exception ocurred.", e); 
+			e.printStackTrace(); 
 		} 
 	}
 

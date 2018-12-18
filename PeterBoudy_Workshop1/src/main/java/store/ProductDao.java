@@ -1,16 +1,18 @@
 package store;
 
+import java.util.List;
+
 public interface ProductDao {
 
-  public void createProduct();
+  public void createProduct(List<Product> productList);
   
- public void updateProduct();
+ public void updateProduct(List<Product> productList);
 
-  public void deleteProduct();
+  public void deleteProduct(List<Product> productList);
 	
-  public void getProductByProductName();
+  public void getProductByProductName(String productName);
 	
-  public void getProductById();		
+  public void getProductById(int id);		
 
 //  public List<Account> getAllAccounts();
 
