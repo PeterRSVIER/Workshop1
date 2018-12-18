@@ -4,17 +4,14 @@ import java.util.List;
 	
 	public interface AccountDao {
 
-		public int createAccount(Account account);
+		public String createAccount(Account account);
 
-		public void updateAccount(Account account);
+		public String updateAccount(Account account);
 
-		public void deleteAccount(Account account);
+		public String deleteAccount(Account account);
 
 		public Account getAccountByEmail(String email);
 		
-		public Account getAccountById(int accountId);
-		
-		
-		
-		public List<Account> getAllAccounts();
-}
+// list nodig voor search? public List<Account> getAccounts();
+
+	}

@@ -14,14 +14,16 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 public class login {
-	public static void main(String[] args ) throws ClassNotFoundException, SQLException{
-		
-final Logger LOG = LoggerFactory.getLogger(login.class);
 
-		String username = null;
-		String password = null;
-		String url = null;
+private final static Logger LOG = LoggerFactory.getLogger(login.class);
+
+		private static String username = null;
+		private static String password = null;
+		private static String url = null;
+		public static Connection connection;
 		
+		public static void createconnection(){
+			
 			    try {
 				File xmlFile = new File("src/main/java/connection/LoginDetails.xml");
 				if (xmlFile.exists()) {

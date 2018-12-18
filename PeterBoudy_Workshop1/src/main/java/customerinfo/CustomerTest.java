@@ -1,17 +1,16 @@
 package customerinfo;
 
-import java.util.logging.*;
-import utility.LogConfig;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class CustomerTest {
 
 	public static void main(String[] args) {
-		final Logger logger = LogConfig.getLogger();
+
 		
-//		Specify LogLevel for Class here, default = ALL
-		utility.LogConfig.setHandlerLevel(Level.FINE);
-//
+final Logger LOG = LoggerFactory.getLogger(CustomerTest.class);
 
 		String 	firstname = "Boudewijn", 
 				middlename = "van", 
@@ -25,9 +24,9 @@ public class CustomerTest {
     		  .build();
         
 
-        logger.log(Level.INFO, "firstname set to: {0}", firstname);
-        logger.log(Level.INFO, "middlename set to: {0}", middlename);
-        logger.log(Level.INFO, "lastname set to: {0}", lastname);//
+        LOG.info("firstname set to: " + firstname);
+        LOG.info("middlename set to: "+ middlename);
+        LOG.info("lastname set to: " + lastname);//
 
         Customer pegr = new Customer.Builder()
 	           .firstname(firstname)
@@ -35,7 +34,7 @@ public class CustomerTest {
 	           .surname(lastname)
 	           .id(2)
 	           .build();
-        logger.log(Level.INFO, "Customers successfully created: {0}", firstname + " " + middlename + " " + lastname);//
+        LOG.info("Customers successfully created:" + firstname + middlename + lastname);
 	}
 
 }
