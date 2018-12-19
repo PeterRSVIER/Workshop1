@@ -27,6 +27,8 @@ public static void main(String[] args) {
 	
 // 		What is the function of close() for statement, preparedStatement and connection?
 	
+//		Package by Feature lay-out
+	
 		ProductDaoImpl productDaoImpl = new ProductDaoImpl();
 		
 		Product PetersPion = new Product("PetersPion", 1, new BigDecimal("6"), 10);
