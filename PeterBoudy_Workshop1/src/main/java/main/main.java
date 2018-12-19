@@ -13,14 +13,20 @@ public class main {
 
 public static void main(String[] args) {
 	
-
-// 		What is the use of Setters in our application?	
-	
-// 		What if column doesnt exist? Now it returns the successful log. We can maybe look into the function EXISTS statement?
-
 //		Do we have to initiate a new connection (login.createconnection) for every query?
 
+//		What is the use of Setters in our application?	
+	
+//		What if column doesnt exist? Now it returns the successful log. We can maybe look into the function EXISTS statement?
+	
 // 		How do we assign id's? Now its done manual during object creation. Look into auto increment method of SQL.
+	
+//		Still have to look into hash-code
+
+// 		Our price (BigDecimal) round to whole integer
+	
+// 		What is the function of close() for statement, preparedStatement and connection?
+	
 		ProductDaoImpl productDaoImpl = new ProductDaoImpl();
 		
 		Product PetersPion = new Product("PetersPion", 1, new BigDecimal("6"), 10);

@@ -22,7 +22,6 @@ public class ProductDaoImpl implements ProductDao {
 private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
 	
 // Database = name ipv productname
-// Price rounds to nearest Integer instead of two decimals.
 	public void createProduct(Product product) {
 		String query = "INSERT INTO product (name, id, price, stock) VALUES( ?, ?, ?, ?)"; 
 	    try {
