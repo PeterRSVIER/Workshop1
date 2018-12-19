@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `PB_Workshop1`.`Address` (
   `addressTypeId` INT(11) NOT NULL,
   `street` VARCHAR(45) NOT NULL,
   `houseNumber` INT(11) NOT NULL,
-  `houseExtention` VARCHAR(45) NULL DEFAULT NULL,
+  `houseExtension` VARCHAR(45) NULL DEFAULT NULL,
   `city` VARCHAR(45) NOT NULL,
   `zipCode` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`, `customerId`),
