@@ -44,6 +44,8 @@ public class Product {
 		this.stock = stock;
 		}
 
+//Still have to look into hash-code
+	
 //	@Override
 //	public int hashCode() {
 //		final int prime = 31;

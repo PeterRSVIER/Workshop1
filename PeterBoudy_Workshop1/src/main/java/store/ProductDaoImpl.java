@@ -40,34 +40,17 @@ private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
 		} 
 	}
 
-	public void updateProduct(Product product, int id) {
-		String query = "UPDATE product SET name = ?, price = ? , stock = ? , id = ? WHERE id = ?"; 
+	public void updateProduct(Product product) {
+		String query = "UPDATE product SET name = ?, price = ? , stock = ?  WHERE id = ?"; 
 		try {
 	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
 			  preparedStatement.setString(1, product.getProductName()); 
 			  preparedStatement.setBigDecimal(2, product.getPrice()); 
 			  preparedStatement.setInt(3, product.getStock());
 			  preparedStatement.setInt(4, product.getId());
-			  preparedStatement.setInt(5, id); 
 			  preparedStatement.executeUpdate(); 
 			  preparedStatement.close();
-			  LOG.info("productid: " + id + " has been updated as: " + product.getProductName());
-		}
-		catch (SQLException e) { 
-			e.printStackTrace(); 
-		} 
-	}
-	public void updateProduct(Product product, String name) {
-		String query = "UPDATE product SET name = ?, price = ? , stock = ?, id = ? WHERE name = ?"; 
-		try {
-	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
-			  preparedStatement.setString(1, product.getProductName()); 
-			  preparedStatement.setBigDecimal(2, product.getPrice()); 
-			  preparedStatement.setInt(3, product.getStock()); 
-			  preparedStatement.setInt(4, product.getId());
-			  preparedStatement.setString(5, name);
-			  preparedStatement.executeUpdate(); 
-			  LOG.info("product: " + product.getProductName() + " has been updated to: " + name);
+			  LOG.info("productid: " + product.getId()+ " has been updated as: " + product.getProductName());
 		}
 		catch (SQLException e) { 
 			e.printStackTrace(); 
@@ -82,20 +65,6 @@ private static final Logger LOG = LoggerFactory.getLogger(ProductDaoImpl.class);
 			  preparedStatement.executeUpdate(); 
 			  preparedStatement.close();
 			  LOG.info("Product with id: " + id + " successfully removed");
-			  } 
-		catch (SQLException e) { 
-			e.printStackTrace(); 
-		} 
-	}
-	public void deleteProduct(String name) {
-		String query = "DELETE FROM product WHERE name = ?"; 
-		try {
-			
-			PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
-			  preparedStatement.setString(1, name); 
-			  preparedStatement.executeUpdate(); 
-			  preparedStatement.close();
-			  LOG.info("Product: " + name + " successfully removed");
 			  } 
 		catch (SQLException e) { 
 			e.printStackTrace(); 

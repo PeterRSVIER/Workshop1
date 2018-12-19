@@ -23,11 +23,3 @@ public class AccountType {
 		this.accountType = accountType;
 	}
 }
-//public void printAccountType() {
-//switch(accountType){
-//case 1: accountType = 0; System.out.println("Accounttype has not been set"); break;
-//case 2: accountType = 1; System.out.println("This account has admin privalages"); break;
-//case 3: accountType = 2; System.out.println("This account has employee privalages"); break;
-//case 4: accountType = 3; System.out.println("This account has client privalages"); break;
-//default: System.out.println("The accounttype of this account is invalid");
-//}

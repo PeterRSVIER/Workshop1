@@ -4,7 +4,7 @@ public interface AccountTypeDao {
 
 	public void createAccountType(AccountType accountType);
 
-	public void updateAccountType(AccountType accounttype, int type);
+	public void updateAccountType(AccountType accounttype);
 	
 	public void deleteAccountType(int accounttype);
 

@@ -34,54 +34,23 @@ private static final Logger LOG = LoggerFactory.getLogger(AccountDaoImpl.class);
 		} 
 	}
 	
-	public void updateAccount(Account account, String email) {
-		String query = "UPDATE account SET id = ?, email = ? , password = ? , accountTypeId = ? WHERE email = ?"; 
+	public void updateAccount(Account account) {
+		String query = "UPDATE account email = ? , password = ? , accountTypeId = ? WHERE id = ?"; 
 		try {
 	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
-			  preparedStatement.setInt(1, account.getId()); 
-			  preparedStatement.setString(2, account.getEmail()); 
-			  preparedStatement.setString(3, account.getPassword());
-			  preparedStatement.setInt(4, account.getAccountType());
-			  preparedStatement.setString(5, email); 
+			  preparedStatement.setString(1, account.getEmail()); 
+			  preparedStatement.setString(2, account.getPassword());
+			  preparedStatement.setInt(3, account.getAccountType());
+			  preparedStatement.setInt(4, account.getId());
 			  preparedStatement.executeUpdate(); 
 			  preparedStatement.close();
-			  LOG.info("Account for: " + account.getEmail() + " has been updated to: " + email);
-		}
-		catch (SQLException e) { 
-			e.printStackTrace(); 
-		} 
-	}
-	public void updateAccount(Account account, int id) {
-		String query = "UPDATE account SET id = ?, email = ? , password = ? , accountTypeId = ? WHERE id = ?"; 
-		try {
-	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
-			  preparedStatement.setInt(1, account.getId()); 
-			  preparedStatement.setString(2, account.getEmail()); 
-			  preparedStatement.setString(3, account.getPassword());
-			  preparedStatement.setInt(4, account.getAccountType());
-			  preparedStatement.setInt(5, id); 
-			  preparedStatement.executeUpdate(); 
-			  preparedStatement.close();
-			  LOG.info("Account with: " + account.getId() + " has been updated to accountId: " + id);
+			  LOG.info("Account with: " + account.getId() + " has been updated");
 		}
 		catch (SQLException e) { 
 			e.printStackTrace(); 
 		} 
 	}
 	
-	public void deleteAccount(String email) {
-		String query = "DELETE FROM account WHERE email = ?"; 
-		try {
-			PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
-			  preparedStatement.setString(1, email); 
-			  preparedStatement.executeUpdate(); 
-			  preparedStatement.close();
-			  LOG.info("Account with email: " + email + " successfully removed");
-			  } 
-		catch (SQLException e) { 
-			e.printStackTrace(); 
-		} 
-	}
 	public void deleteAccount(int id) {
 		String query = "DELETE FROM account WHERE id = ?"; 
 		try {

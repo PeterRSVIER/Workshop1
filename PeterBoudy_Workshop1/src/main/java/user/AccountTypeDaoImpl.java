@@ -34,15 +34,15 @@ public class AccountTypeDaoImpl implements AccountTypeDao {
 
 	// Hoe koppelen we id van accounttype aan de description? Nu zijn staat deze bij creatie los van elkaar.
 	// Bijv, we kunnen een id 1 en 2 maken die beide de description admin hebben.
-	public void updateAccountType(AccountType accountType, int id) {
+	public void updateAccountType(AccountType accountType) {
 		String query = "UPDATE accounttype SET description = ? WHERE id = ?"; 
 		try {
 	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);; 
 			  preparedStatement.setString(1, accountType.getDescription()); 
-			  preparedStatement.setInt(2, id); 
+			  preparedStatement.setInt(2, accountType.getAccountType()); 
 			  preparedStatement.executeUpdate(); 
 			  preparedStatement.close();
-			  LOG.info("AccountTypeId: " + id + "now has description: " + accountType.getDescription());
+			  LOG.info("AccountTypeId: " + accountType.getAccountType() + "now has description: " + accountType.getDescription());
 		}
 		catch (SQLException e) { 
 			e.printStackTrace(); 

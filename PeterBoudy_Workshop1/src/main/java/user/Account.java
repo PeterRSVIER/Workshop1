@@ -29,8 +29,7 @@ public class Account {
 	public int getAccountType() {
 		return accountType;
 		}
-
-
+	
 	public void setEmail(String email) {
 		this.email = email;
 		}

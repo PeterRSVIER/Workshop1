@@ -11,11 +11,14 @@ public class main {
 
 public static void main(String[] args) {
 	
+
+// 		What is the use of Setters in our application?	
 	
 // 		What if column doesnt exist? Now it returns the successful log. We can maybe look into the function EXISTS statement?
 
 //		Do we have to initiate a new connection (login.createconnection) for every query?
 
+// 		How do we assign id's? Now its done manual during object creation. Look into auto increment method of SQL.
 		ProductDaoImpl productDaoImpl = new ProductDaoImpl();
 		
 		Product PetersPion = new Product("PetersPion", 1, new BigDecimal("6"), 10);
@@ -27,7 +30,7 @@ public static void main(String[] args) {
 		productDaoImpl.createProduct(PetersPion);
 		productDaoImpl.createProduct(PetersKoning);
 		
-		productDaoImpl.updateProduct(PetersPionUpdated, 1);
+		productDaoImpl.updateProduct(PetersPionUpdated);
 
 		productDaoImpl.printProduct("PetersPion");
 		productDaoImpl.printProduct("PetersPionUpdated");
@@ -42,7 +45,7 @@ public static void main(String[] args) {
 		Account accountPeter = new Account (1,"peterdegraaf1991@hotmail.com","rsvier",1);
 		Account accountPeterUpdated = new Account (1, "peterdegraaf0302@gmail.com", "rsvier", 1);
 		accountDaoImpl.createAccount(accountPeter);
-		accountDaoImpl.updateAccount(accountPeterUpdated, "peterdegraaf1991@hotmail.com");
+		accountDaoImpl.updateAccount(accountPeterUpdated);
 		accountDaoImpl.printAccount();
 	}
 
