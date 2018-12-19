@@ -43,8 +43,6 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 		}
-
-//Still have to look into hash-code
 	
 //	@Override
 //	public int hashCode() {

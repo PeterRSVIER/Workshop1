@@ -32,8 +32,6 @@ public class AccountTypeDaoImpl implements AccountTypeDao {
 		} 
 	}
 
-	// Hoe koppelen we id van accounttype aan de description? Nu zijn staat deze bij creatie los van elkaar.
-	// Bijv, we kunnen een id 1 en 2 maken die beide de description admin hebben.
 	public void updateAccountType(AccountType accountType) {
 		String query = "UPDATE accounttype SET description = ? WHERE id = ?"; 
 		try {
