@@ -1,19 +1,25 @@
 package customerinfo;
 
-public enum AddressType {
+public class AddressType {
 
-	RESIDENCE("Residence address"),//woonadres
-	BILLING("Billing address"),//factuuradres
-	DELIVERY("Delivery address")//leveradres
-	;
-	
+	private final String RESIDENCE = "Residence address";//woonadres
+	private final String BILLING = "Billing address";//factuuradres
+	private final String DELIVERY = "Delivery address";//leveradres
+	private final int id;
 	private String description;
 	
-	private AddressType(String description) {
+	private AddressType(int id, String description) {
+		this.id = id;
 		this.description = description;
+		if (description != RESIDENCE && description != BILLING && description != DELIVERY)
+		System.out.println("Please use one of the three values " + RESIDENCE + ", " + BILLING + " or " + DELIVERY);
 	}
 
-    protected String getDescription() {
+    private int getId() {
+    	return id;
+    }
+
+    private String getDescription() {
     	return description;
     }
 }

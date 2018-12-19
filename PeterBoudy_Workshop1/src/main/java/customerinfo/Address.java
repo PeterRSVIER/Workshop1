@@ -5,7 +5,7 @@ package customerinfo;
 		private final int 		customerId;
 		private final int 		houseNumber;
 
-		private final String    addressType;
+		private final int    addressTypeId;
 		private final String 	street;
 		private final String 	houseExtension;
 		private final String	zipCode;
@@ -21,8 +21,8 @@ package customerinfo;
 			return customerId;
 		}
 
-		public String getAddressType() {
-			return addressType;
+		public int getAddressTypeId() {
+			return addressTypeId;
 		}
 		
 		public String getStreet() {
@@ -52,7 +52,7 @@ package customerinfo;
 //		Start of AddressBuilder
 		private Address(Builder builder) {
 		this.customerId = builder.customerId;
-		this.addressType = builder.addressType;
+		this.addressTypeId = builder.addressTypeId;
 		this.id = builder.id;
 		this.street = builder.street;
 		this.houseNumber = builder.houseNumber;
@@ -67,7 +67,7 @@ package customerinfo;
 		return 
 		id + " "
 		+ customerId + " "
-		+ addressType + " "
+		+ addressTypeId + " "
 		+ ((street != null) ? street + " ": "")
 		+ (Integer.toString(houseNumber) !="0" ? Integer.toString(houseNumber) + " ": "")
 		+ ((houseExtension != null) ? houseExtension + " ": "")
@@ -81,7 +81,7 @@ package customerinfo;
 		private int 	id;
 		private int 	houseNumber;
 		private int		customerId;
-		private String 	addressType;
+		private int 	addressTypeId;
 		private String	street;
 		private String	houseExtension;
 		private String	zipCode;
@@ -93,8 +93,8 @@ package customerinfo;
 		return this;
 		}
 		
-		public Builder addressType(String addressType) {
-		this.addressType = addressType;
+		public Builder addressTypeId(int addressTypeId) {
+		this.addressTypeId = addressTypeId;
 		return this;
 		}
 		

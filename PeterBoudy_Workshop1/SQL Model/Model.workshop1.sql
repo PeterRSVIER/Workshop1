@@ -62,12 +62,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `PB_Workshop1`.`Customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PB_Workshop1`.`Customer` (
-  `Id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `accountId` INT(11) NOT NULL,
-  `firstname` VARCHAR(45) NOT NULL,
-  `middlename` VARCHAR(45) NULL DEFAULT NULL,
-  `surname` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`Id`),
+  `firstName` VARCHAR(45) NOT NULL,
+  `middleName` VARCHAR(45) NULL DEFAULT NULL,
+  `surName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_accountId` (`accountId` ASC) VISIBLE,
   CONSTRAINT `fk_accountId`
     FOREIGN KEY (`accountId`)
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `PB_Workshop1`.`Address` (
     ON UPDATE CASCADE,
   CONSTRAINT `fk_customerId`
     FOREIGN KEY (`customerId`)
-    REFERENCES `PB_Workshop1`.`Customer` (`Id`)
+    REFERENCES `PB_Workshop1`.`Customer` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -131,9 +131,15 @@ CREATE TABLE IF NOT EXISTS `PB_Workshop1`.`Order` (
   `orderStatusId` INT(11) NOT NULL,
   PRIMARY KEY (`Id`),
   INDEX `fk_orderStatusId` (`orderStatusId` ASC) VISIBLE,
+  INDEX `fk_OrderCustomer1_idx` (`customerId` ASC) VISIBLE,
   CONSTRAINT `fk_orderStatusId`
     FOREIGN KEY (`orderStatusId`)
     REFERENCES `PB_Workshop1`.`OrderStatus` (`Id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_OrderCustomer1`
+    FOREIGN KEY (`customerId`)
+    REFERENCES `PB_Workshop1`.`Customer` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB

@@ -2,7 +2,6 @@ package customerinfo;
 
 public interface AddressDao {
 
-	public void createAddressType(String addressType);
 	
 	public void createAddress(Address address);
 	  
@@ -10,13 +9,11 @@ public interface AddressDao {
 
 	   public void deleteAddress(Address address);
 	   
-	   public void deleteAddressType(int id);
-	 	
-//to get an address without house extension, or all addresses on that housennumber
-	   public void getAddressByZipHN(String zipCode, int houseNumber);
-
-	   public void getAddressByZipHNE(String zipCode, int houseNumber, String houseExtension);
-	 	
-	   public void getAddressById(int id);		
-
+	   public void printAddresses();
+	   
+	   public void printAddresses(String zipCode, int houseNumber);
+	   
+	   public void printAddresses(String zipCode, int houseNumber, String houseExtension);
+	   
+	   public void printAddress(int id);
 }

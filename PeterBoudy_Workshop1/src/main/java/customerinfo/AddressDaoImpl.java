@@ -3,39 +3,26 @@ package customerinfo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import connection.Login;
 
 public class AddressDaoImpl implements AddressDao {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AddressDaoImpl.class);
 
-	public void createAddressType(String addressType) {
-		// TODO Auto-generated method stub
-		String query = "INSERT INTO addresstype (id, description) values (1, ?)";
-	    try {
-		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		  PreparedStatement preparedStatement = connection.prepareStatement(query);
-          preparedStatement.setString(1, addressType);
-		  preparedStatement.executeUpdate(); 
-		  LOG.info("Addresstype successfully created"); 
-	    } 
-	    catch (SQLException e) { 
-	    	e.printStackTrace(); 
-		} 
-	}
-
-//nb: addresstype retrieved from table addresstype instead of address
-	//in DB houseExtention (corrected locally)
 	public void createAddress(Address address) {
 		// TODO Auto-generated method stub
-		String query = "INSERT INTO address (id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressType)"
-				+ " SELECT ?, ?, ?, ?, ?, ?, ?, ?, id FROM addresstype where addressType = ?"; 
+		String query = "INSERT INTO address (id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId)"
+				+ " (VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
 	    try {
-		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		  PreparedStatement preparedStatement = connection.prepareStatement(query);
+		  PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
 	      preparedStatement.setInt(1, address.getId());
 		  preparedStatement.setInt(2, address.getCustomerId());
 		  preparedStatement.setString(3, address.getZipCode());
@@ -44,7 +31,7 @@ public class AddressDaoImpl implements AddressDao {
           preparedStatement.setString(6, address.getStreet());
           preparedStatement.setString(7, address.getCity());
           preparedStatement.setString(8, address.getCountry());
-          preparedStatement.setString(9, address.getAddressType());
+          preparedStatement.setInt(9, address.getAddressTypeId());
 		  preparedStatement.executeUpdate(); 
 		  LOG.info("Address successfully created"); 
 	    } 
@@ -78,8 +65,7 @@ public class AddressDaoImpl implements AddressDao {
 		// TODO Auto-generated method stub
 		String query = "DELETE address where id = ?"; 
 	    try {
-		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		  PreparedStatement preparedStatement = connection.prepareStatement(query);
+		  PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
 	      preparedStatement.setInt(1, address.getId());
 		  preparedStatement.executeUpdate(); 
 		  LOG.info("Address successfully deleted"); 
@@ -89,74 +75,106 @@ public class AddressDaoImpl implements AddressDao {
 		} 
 	}
 
-	public void deleteAddressType(int id) {
-		// TODO Auto-generated method stub
-		String query = "DELETE addresstype where id = ?"; 
-	    try {
-		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		  PreparedStatement preparedStatement = connection.prepareStatement(query);
-	      preparedStatement.setInt(1, id);
-		  preparedStatement.executeUpdate(); 
-		  LOG.info("Address type successfully deleted"); 
-	    } 
-	    catch (SQLException e) { 
-	    	e.printStackTrace(); 
-		} 
-	}
+	public void printAddresses() {
+		  try {
+				Statement statement = Login.createconnection().createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId from address");
+				ResultSetMetaData metaData = resultSet.getMetaData();
+				
+				for (int i = 1; i <= metaData.getColumnCount(); i++){
+					System.out.printf("%-12s\t", metaData.getColumnName(i));
+				}	
+				System.out.println();
+				
+				while (resultSet.next()) {
+					for (int i = 1; i <= metaData.getColumnCount(); i++)
+						System.out.printf("%-12s\t", resultSet.getObject(i));
+					System.out.println();
+				}
+				statement.close();
+		  } 
+		  catch (SQLException e) { 
+			  e.printStackTrace(); 
+		  } 
+		}
 
-	//method for addresses without extension, or to get all addresses on a housenumber
-	//check addresstype
-	public void getAddressByZipHN(String zipCode, int houseNumber) { 
-		// TODO Auto-generated method stub
-	  String query = "SELECT ads.id, customerId, zipCode, houseNumber, houseExtension, street, city, country, adt.type addressType FROM address ads, addresstype adt" + 
-		             "WHERE ads.address_type_id = adt.id and ads.zipCode = ? and ads.houseNumber = ?)"; 
+	public void printAddresses(String zipCode, int houseNumber) {
 	  try {
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, zipCode);
-		preparedStatement.setInt(2, houseNumber);
-		preparedStatement.executeUpdate(); 
-		LOG.info("Address successfully retrieved"); 
+          String query = "SELECT id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId FROM address where zipCode = ? and houseNumber = ?";
+			PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
+			preparedStatement.setString(1, zipCode);
+			preparedStatement.setInt(2, houseNumber);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSetMetaData metaData = resultSet.getMetaData();
+			
+			for (int i = 1; i <= metaData.getColumnCount(); i++){
+				System.out.printf("%-12s\t", metaData.getColumnName(i));
+			}	
+			System.out.println();
+			
+			while (resultSet.next()) {
+				for (int i = 1; i <= metaData.getColumnCount(); i++)
+					System.out.printf("%-12s\t", resultSet.getObject(i));
+				System.out.println();
+			}
+			preparedStatement.close();
 	  } 
 	  catch (SQLException e) { 
-		e.printStackTrace(); 
+		  e.printStackTrace(); 
 	  } 
 	}
+	
+	public void printAddresses(String zipCode, int houseNumber, String houseExtension) {
+		  try {
+	          String query = "SELECT id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId FROM address where zipCode = ? and houseNumber = ? and houseExtension = ?";
+				PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
+				preparedStatement.setString(1, zipCode);
+				preparedStatement.setInt(2, houseNumber);
+				preparedStatement.setString(3, houseExtension);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				ResultSetMetaData metaData = resultSet.getMetaData();
+				
+				for (int i = 1; i <= metaData.getColumnCount(); i++){
+					System.out.printf("%-12s\t", metaData.getColumnName(i));
+				}	
+				System.out.println();
+				
+				while (resultSet.next()) {
+					for (int i = 1; i <= metaData.getColumnCount(); i++)
+						System.out.printf("%-12s\t", resultSet.getObject(i));
+					System.out.println();
+				}
+				preparedStatement.close();
+		  } 
+		  catch (SQLException e) { 
+			  e.printStackTrace(); 
+		  } 
+		}
 
-	//check addresstype
-	public void getAddressByZipHNE(String zipCode, int houseNumber, String houseExtension) {
-		// TODO Auto-generated method stub
-	  String query = "SELECT ads.id, customerId, zipCode, houseNumber, houseExtension, street, city, country, adt.type addressType FROM address ads, addresstype adt" + 
-		             "WHERE ads.address_type_id = adt.id and ads.zipCode = ? and ads.houseNumber = ? and ads.houseExtension = ?)"; 
-	  try {
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		PreparedStatement preparedStatement = connection.prepareStatement(query);
-		preparedStatement.setString(1, zipCode);
-		preparedStatement.setInt(2, houseNumber);
-	    preparedStatement.setString(3, houseExtension); 
-		preparedStatement.executeUpdate(); 
-		LOG.info("Address successfully retrieved"); 
-	  } 
-	  catch (SQLException e) { 
-		e.printStackTrace(); 
-	  } 
-	}
+	public void printAddress(int id) {
+				String query = "SELECT id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId FROM address where id = ?"; 
+				try {
+				PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
+				  preparedStatement.setInt(1, id); 
+				  ResultSet resultSet = preparedStatement.executeQuery();
+				  
+				  ResultSetMetaData metaData = resultSet.getMetaData();
+					for (int i = 1; i <= metaData.getColumnCount(); i++){
+						System.out.printf("%-20s\t", metaData.getColumnName(i));
+					}	
+					System.out.println();
+					
+					while (resultSet.next()) {
+						for (int i = 1; i <= metaData.getColumnCount(); i++)
+							System.out.printf("%-20s\t", resultSet.getObject(i));
+						System.out.println();
+				}
+					preparedStatement.close();
+				}
+				catch (SQLException e) { 
+					e.printStackTrace(); 
+				} 
+			}
 
-//check addresstype
-	public void getAddressById(int id) {
-		// TODO Auto-generated method stub
-		
-		String query = "SELECT ads.id, customerId, zipCode, houseNumber, houseExtension, street, city, country, adt.type addressType FROM address ads, addresstype adt WHERE ads.address_type_id = adt.id and ads.id = ?"; 
-	    try {
-		  Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/pb_workshop1?serverTimezone=Europe/Amsterdam","root","rsvier");
-		  PreparedStatement preparedStatement = connection.prepareStatement(query);
-	      preparedStatement.setInt(1, id);
-		  preparedStatement.executeUpdate(); 
-		  LOG.info("Address successfully retrieved"); 
-	    } 
-	    catch (SQLException e) { 
-	    	e.printStackTrace(); 
-		} 
-	}
 
 }

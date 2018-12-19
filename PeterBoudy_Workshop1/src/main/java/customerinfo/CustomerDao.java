@@ -8,8 +8,12 @@ public interface CustomerDao {
 
 	   public void deleteCustomer(Customer customer);
 	 	
-	   public void getCustomerBySurname(String surname);
+//	   public void getCustomerBySurname(String surname);
 	 	
-	   public void getCustomerById(int id);		
+	   public void printCustomers();	
+	   
+	   public void printCustomer(int id);
+	   
+	   public void printCustomers(String surname);
 
 }
