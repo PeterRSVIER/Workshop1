@@ -19,20 +19,19 @@ public class AddressDaoImpl implements AddressDao {
 
 	public void createAddress(Address address) {
 		// TODO Auto-generated method stub
-		String query = "INSERT INTO address (id, customerId, zipCode, houseNumber, houseExtension, street, city, country, addressTypeId)"
-				+ " (VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+		String query = "INSERT INTO address (id, customerId, zipCode, houseNumber, street, city, addressTypeId, houseExtension)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
 	    try {
 		  PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
 	      preparedStatement.setInt(1, address.getId());
 		  preparedStatement.setInt(2, address.getCustomerId());
 		  preparedStatement.setString(3, address.getZipCode());
 		  preparedStatement.setInt(4, address.getHouseNumber());
-          preparedStatement.setString(5, address.getHouseExtension());
-          preparedStatement.setString(6, address.getStreet());
-          preparedStatement.setString(7, address.getCity());
-          preparedStatement.setString(8, address.getCountry());
-          preparedStatement.setInt(9, address.getAddressTypeId());
-		  preparedStatement.executeUpdate(); 
+          preparedStatement.setString(5, address.getStreet());
+          preparedStatement.setString(6, address.getCity());
+          preparedStatement.setInt(7, address.getAddressTypeId());
+          preparedStatement.setString(8, address.getHouseExtension());
+          preparedStatement.executeUpdate(); 
 		  LOG.info("Address successfully created"); 
 	    } 
 	    catch (SQLException e) { 

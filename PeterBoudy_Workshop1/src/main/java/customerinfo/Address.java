@@ -10,7 +10,6 @@ package customerinfo;
 		private final String 	houseExtension;
 		private final String	zipCode;
 		private final String	city;
-		private final String	country;
 		
 //		Start of Address-Getters
 		public int getId() {
@@ -45,9 +44,6 @@ package customerinfo;
 			return city;
 		}
 		
-		public String getCountry() {
-			return country;
-		}
 //		End of Address-Getters
 //		Start of AddressBuilder
 		private Address(Builder builder) {
@@ -59,7 +55,6 @@ package customerinfo;
 		this.houseExtension = builder.houseExtension;
 		this.zipCode = builder.zipCode;
 		this.city = builder.city;
-		this.country = builder.country;
 		}
 		
 		@Override
@@ -72,8 +67,7 @@ package customerinfo;
 		+ (Integer.toString(houseNumber) !="0" ? Integer.toString(houseNumber) + " ": "")
 		+ ((houseExtension != null) ? houseExtension + " ": "")
 		+ ((zipCode != null) ? zipCode + " ": "")
-		+ ((city != null) ? city + " ": "")
-		+ ((country != null) ? country + " ": "");
+		+ ((city != null) ? city + " ": "");
 		
 		}
 		
@@ -86,7 +80,6 @@ package customerinfo;
 		private String	houseExtension;
 		private String	zipCode;
 		private String	city;
-		private String	country;
 		
 		public Builder customerId(int customerId) {
 		this.customerId = customerId;
@@ -128,11 +121,7 @@ package customerinfo;
 		return this;
 		}
 		
-		public Builder country(String country) {
-		this.country = country;
-		return this;
-		}
-		
+	
 		public Address build() {
 		return new Address(this);
 		}

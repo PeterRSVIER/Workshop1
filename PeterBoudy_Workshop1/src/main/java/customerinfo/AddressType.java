@@ -8,7 +8,7 @@ public class AddressType {
 	private final int id;
 	private String description;
 	
-	private AddressType(int id, String description) {
+	protected AddressType(int id, String description) {
 		this.id = id;
 		this.description = description;
 		if (description != RESIDENCE && description != BILLING && description != DELIVERY)
