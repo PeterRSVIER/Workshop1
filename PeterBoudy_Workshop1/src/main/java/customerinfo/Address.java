@@ -1,12 +1,11 @@
 package customerinfo;
-import java.sql.*;
 
 	public class Address {
 		private final int 		id;
 		private final int 		customerId;
-		private int 			houseNumber;
+		private final int 		houseNumber;
 
-		private final String 	addressType;
+		private final String    addressType;
 		private final String 	street;
 		private final String 	houseExtension;
 		private final String	zipCode;
