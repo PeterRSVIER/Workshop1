@@ -35,7 +35,7 @@ private static final Logger LOG = LoggerFactory.getLogger(AccountDaoImpl.class);
 	}
 	
 	public void updateAccount(Account account) {
-		String query = "UPDATE account email = ? , password = ? , accountTypeId = ? WHERE id = ?"; 
+		String query = "UPDATE account SET email = ? , password = ? , accountTypeId = ? WHERE id = ?"; 
 		try {
 	    	PreparedStatement preparedStatement = Login.createconnection().prepareStatement(query);
 			  preparedStatement.setString(1, account.getEmail()); 
