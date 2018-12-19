@@ -22,9 +22,6 @@ public class AccountType {
 	public void setAccountType(int accountType) {
 		this.accountType = accountType;
 	}
-	
-	
-	
 }
 //public void printAccountType() {
 //switch(accountType){
