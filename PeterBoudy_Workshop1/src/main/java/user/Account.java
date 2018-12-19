@@ -5,9 +5,9 @@ public class Account {
 	private final int id;
 	private String email;
 	private String password;
-	private String accountType;
+	private int accountType;
 
-	public Account(int id, String email, String password, String accountType){
+	public Account(int id, String email, String password, int accountType){
 	   this.id = id;
 	   this.email = email;
 	   this.password = password;
@@ -26,7 +26,7 @@ public class Account {
 		return password;
 		}
 
-	public String getAccountType() {
+	public int getAccountType() {
 		return accountType;
 		}
 
@@ -39,7 +39,7 @@ public class Account {
 		this.password = password;
 	}
 
-	public void setAccountType(String accountType) {
+	public void setAccountType(int accountType) {
 		this.accountType = accountType;
 	}
 

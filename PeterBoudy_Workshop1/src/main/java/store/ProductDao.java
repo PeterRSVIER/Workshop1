@@ -4,16 +4,15 @@ import java.util.List;
 
 public interface ProductDao {
 
-  public void createProduct(Product product1);
+public void createProduct(Product product);
   
- public void updateProduct(List<Product> productList);
+public void updateProduct(Product product, int id);
+public void updateProduct (Product product, String name);
 
-  public void deleteProduct(List<Product> productList);
+public void deleteProduct(int id);
+public void deleteProduct(String name);
 	
-  public void getProductByProductName(String productName);
-	
-  public void getProductById(int id);		
-
-//  public List<Account> getAllAccounts();
-
+public void printProduct();
+public void printProduct(int id);		
+public void printProduct(String name);
 }

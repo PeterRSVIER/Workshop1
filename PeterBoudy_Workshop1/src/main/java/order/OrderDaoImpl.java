@@ -11,7 +11,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import connection.login;
+import connection.Login;
 
 
 public class OrderDaoImpl implements OrderDao{
@@ -21,9 +21,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		public void createOrder(List<Order> orderList) {
 		  String query = "INSERT INTO order (id, totalCost, date, customerId, status) VALUES( ?, ?, ?, ?, ?)"; 
 		  try {
-				login.createconnection();
-				Statement statement = login.connection.createStatement();
-			PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+				Login.createconnection();
+				Statement statement = Login.connection.createStatement();
+			PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 			for (Order order : orderList) { 
 			    	  //int id, BigDecimal totalCost, LocalDateTime date, int customerId, String status
 				preparedStatement.setInt(1, order.getId());
@@ -43,9 +43,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		public void updateOrder(List<Order> orderList) { 
 		  String query = "UPDATE order set totalCost = ?, date = ?, customerId = ?, status = ? WHERE id = ?"; 
 		  try {
-			login.createconnection();
-			Statement statement = login.connection.createStatement();
-			PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+			Login.createconnection();
+			Statement statement = Login.connection.createStatement();
+			PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 			for (Order order : orderList) { 
 			  preparedStatement.setBigDecimal(1, order.getTotalCost()); 
 			  preparedStatement.setDate(2, order.getDate()); 
@@ -64,9 +64,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		public void deleteOrder(List<Order> orderList) {
 		  String query = "DELETE order WHERE id = ?"; 
 		  try {
-			  login.createconnection();
-			  Statement statement = login.connection.createStatement();
-			  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+			  Login.createconnection();
+			  Statement statement = Login.connection.createStatement();
+			  PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 			for (Order order : orderList) { 
 			  preparedStatement.setInt(1, order.getId()); 
 			  preparedStatement.executeUpdate(); 
@@ -81,9 +81,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		  public void getOrdersByCustId(int customerId) {
 			String query = "SELECT id, totalCost, date, customerId, status from order WHERE customerId = ?"; 
 			try {
-			  login.createconnection();
-			  Statement statement = login.connection.createStatement();
-			  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+			  Login.createconnection();
+			  Statement statement = Login.connection.createStatement();
+			  PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 			  preparedStatement.setInt(1, customerId); 
 			  preparedStatement.executeUpdate(); 
 			  LOG.info("Orders successfully retrieved"); 
@@ -96,9 +96,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		  public void getOrdersByDate(Date date) {
 			String query = "SELECT id, totalCost, date, customerId, status from order WHERE date = ?"; 
 			try {
-			  login.createconnection();
-			  Statement statement = login.connection.createStatement();
-			  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+			  Login.createconnection();
+			  Statement statement = Login.connection.createStatement();
+			  PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 			  preparedStatement.setDate(1, date); 
 			  preparedStatement.executeUpdate(); 
 			  LOG.info("Orders successfully retrieved"); 
@@ -111,9 +111,9 @@ private static final Logger LOG = LoggerFactory.getLogger(OrderDaoImpl.class);
 		  public void getOrderById(int id) {
 				String query = "SELECT id, totalCost, date, customerId, status from order WHERE id = ?"; 
 				try {
-			      login.createconnection();
-			      Statement statement = login.connection.createStatement();
-				  PreparedStatement preparedStatement = login.connection.prepareStatement(query);
+			      Login.createconnection();
+			      Statement statement = Login.connection.createStatement();
+				  PreparedStatement preparedStatement = Login.connection.prepareStatement(query);
 				  preparedStatement.setInt(1, id); 
 				  preparedStatement.executeUpdate(); 
 				  LOG.info("Order successfully retrieved"); 
